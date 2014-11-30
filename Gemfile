@@ -11,6 +11,7 @@ gem 'turbolinks'
 gem 'uglifier'
 
 gem 'figaro'
+gem 'jbuilder'
 
 group :development do
   gem 'awesome_print'
