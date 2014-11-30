@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
-  # namespace :api, defaults: { format: :json } do
-  #   resources :teams, only: [:show, :update]
+  namespace :api, defaults: { format: :json } do
+    resources :teams, only: [:show, :update]
 
   #   resources :users, only: [:index, :show, :update] do
   #     get :statuses, on: :member
@@ -11,5 +11,5 @@ Rails.application.routes.draw do
   #   end
 
   #   resources :statuses, only: [:create, :update, :destroy]
-  # end
+  end
 end
