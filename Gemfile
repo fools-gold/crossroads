@@ -11,6 +11,7 @@ gem 'turbolinks'
 gem 'uglifier'
 
 gem 'figaro'
+gem 'gravtastic'
 gem 'high_voltage'
 gem 'jbuilder'
 

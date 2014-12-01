@@ -1,4 +1,7 @@
 class User < ActiveRecord::Base
+  include Gravtastic
+  gravtastic
+
   belongs_to :team
 
   validates :first_name, presence: true
