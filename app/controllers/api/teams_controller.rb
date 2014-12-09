@@ -1,5 +1,5 @@
 module Api
-  class TeamsController < ApplicationController
+  class TeamsController < ApiController
     before_action :set_team, only: [:show, :update]
 
     def show

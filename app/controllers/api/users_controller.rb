@@ -1,5 +1,5 @@
 module Api
-  class UsersController < ApplicationController
+  class UsersController < ApiController
     before_action :set_user, only: [:show, :update]
 
     def index

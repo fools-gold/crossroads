@@ -1,5 +1,5 @@
 module Api
-  class StatusesController < ApplicationController
+  class StatusesController < ApiController
     before_action :set_status, only: [:update, :destroy]
 
     def index
