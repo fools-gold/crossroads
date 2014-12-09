@@ -4,6 +4,8 @@ class User < ActiveRecord::Base
 
   belongs_to :team
 
+  has_many :statuses, dependent: :destroy
+
   validates :first_name, presence: true
   validates :last_name, presence: true
   validates :email, presence: true, uniqueness: { scope: :team_id }
