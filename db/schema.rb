@@ -29,7 +29,8 @@ ActiveRecord::Schema.define(version: 20141214102644) do
     t.integer "hashtag_id", null: false
   end
 
-  add_index "hashtags_statuses", ["status_id", "hashtag_id"], name: "index_hashtags_statuses_on_status_id_and_hashtag_id", using: :btree
+  add_index "hashtags_statuses", ["hashtag_id", "status_id"], name: "index_hashtags_statuses_on_hashtag_id_and_status_id", unique: true, using: :btree
+  add_index "hashtags_statuses", ["status_id", "hashtag_id"], name: "index_hashtags_statuses_on_status_id_and_hashtag_id", unique: true, using: :btree
 
   create_table "statuses", force: true do |t|
     t.text     "description", null: false
