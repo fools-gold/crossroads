@@ -13,6 +13,7 @@ gem 'slim-rails'
 gem 'turbolinks'
 gem 'uglifier'
 
+gem 'faker'
 gem 'figaro'
 gem 'gravtastic'
 gem 'high_voltage'
