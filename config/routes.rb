@@ -5,9 +5,9 @@ Rails.application.routes.draw do
 #     get :statuses, on: :member
   end
 
-#   resources :hashtags, only: [:index, :show] do
+  resources :hashtags, only: [:index, :show] do
 #     get :statuses, on: :member
-#   end
+  end
 
   resources :statuses, only: [:create, :update, :destroy]
 end

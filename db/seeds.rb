@@ -13,7 +13,9 @@
     user = team.users.create first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, email: Faker::Internet.email
 
     10.times do
-      user.statuses.create description: Faker::Lorem.sentence
+      sentence = Faker::Lorem.sentence.split
+      sentence << "##{sentence.pop}" if rand(4).zero?
+      user.statuses.create description: sentence.shuffle.join(' ')
     end
   end
 end

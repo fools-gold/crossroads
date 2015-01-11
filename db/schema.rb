@@ -11,10 +11,26 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141206143255) do
+ActiveRecord::Schema.define(version: 20141214102644) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "hashtags", force: true do |t|
+    t.string   "name",       null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "hashtags", ["name"], name: "index_hashtags_on_name", unique: true, using: :btree
+
+  create_table "hashtags_statuses", id: false, force: true do |t|
+    t.integer "status_id",  null: false
+    t.integer "hashtag_id", null: false
+  end
+
+  add_index "hashtags_statuses", ["hashtag_id", "status_id"], name: "index_hashtags_statuses_on_hashtag_id_and_status_id", unique: true, using: :btree
+  add_index "hashtags_statuses", ["status_id", "hashtag_id"], name: "index_hashtags_statuses_on_status_id_and_hashtag_id", unique: true, using: :btree
 
   create_table "statuses", force: true do |t|
     t.text     "description", null: false
