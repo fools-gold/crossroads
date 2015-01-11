@@ -1,8 +1,9 @@
 class HashtagsController < ApplicationController
   before_action :set_hashtag, only: [:show]
+  before_action :authenticate_user!
 
   def index
-    @hashtags = Hashtag.all
+    @hashtags = current_user.team.hashtags
   end
 
   def show
