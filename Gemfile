@@ -12,6 +12,7 @@ gem 'slim-rails'
 gem 'turbolinks'
 gem 'uglifier'
 
+gem 'devise'
 gem 'faker'
 gem 'figaro'
 gem 'gravtastic'

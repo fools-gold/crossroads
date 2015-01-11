@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  devise_for :users
+
   resources :teams, only: [:show, :update]
 
   resources :users, only: [:index, :show, :update] do
