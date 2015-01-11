@@ -7,6 +7,8 @@ gem 'rails', '4.2.0'
 gem 'pg'
 
 # asset pipeline
+gem 'bootstrap-sass'
+gem 'coffee-rails'
 gem 'jquery-rails'
 gem 'slim-rails'
 gem 'turbolinks'
@@ -18,6 +20,7 @@ gem 'figaro'
 gem 'gravtastic'
 gem 'high_voltage'
 gem 'jbuilder'
+gem 'simple_form'
 
 group :development do
   gem 'awesome_print'
@@ -28,6 +31,7 @@ group :development do
   gem 'did_you_mean'
   gem 'pry-rails'
   gem 'quiet_assets'
+  gem 'rails_layout', require: false
   gem 'spring'
   # gem 'web-console'
 end
