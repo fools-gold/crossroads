@@ -9,6 +9,7 @@ gem 'pg'
 
 # asset pipeline
 gem 'jquery-rails'
+gem 'slim-rails'
 gem 'turbolinks'
 gem 'uglifier'
 
