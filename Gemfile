@@ -23,8 +23,10 @@ group :development do
   gem 'better_errors'
   gem 'binding_of_caller'
   gem 'bullet'
+  gem 'byebug'
   gem 'did_you_mean'
   gem 'pry-rails'
+  gem 'quiet_assets'
   gem 'spring'
   # gem 'web-console'
 end

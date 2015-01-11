@@ -48,6 +48,10 @@ GEM
     bullet (4.14.0)
       activesupport (>= 3.0.0)
       uniform_notifier (>= 1.6.0)
+    byebug (3.5.1)
+      columnize (~> 0.8)
+      debugger-linecache (~> 1.2)
+      slop (~> 3.6)
     coderay (1.1.0)
     coffee-rails (4.1.0)
       coffee-script (>= 2.2.0)
@@ -56,7 +60,9 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.8.0)
+    columnize (0.9.0)
     debug_inspector (0.0.2)
+    debugger-linecache (1.2.0)
     did_you_mean (0.9.5)
       interception
     erubis (2.7.0)
@@ -98,6 +104,8 @@ GEM
       slop (~> 3.4)
     pry-rails (0.3.2)
       pry (>= 0.9.10)
+    quiet_assets (1.0.3)
+      railties (>= 3.1, < 5.0)
     rack (1.6.0)
     rack-test (0.6.3)
       rack (>= 1.0)
@@ -167,6 +175,7 @@ DEPENDENCIES
   better_errors
   binding_of_caller
   bullet
+  byebug
   did_you_mean
   faker
   figaro
@@ -176,6 +185,7 @@ DEPENDENCIES
   jquery-rails
   pg
   pry-rails
+  quiet_assets
   rails (= 4.2.0)
   slim-rails
   spring
