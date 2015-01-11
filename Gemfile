@@ -2,10 +2,9 @@ source 'https://rubygems.org'
 
 ruby '2.2.0'
 
-gem 'rails', '4.1.7'
+gem 'rails', '4.2.0'
 
 gem 'pg'
-
 
 # asset pipeline
 gem 'jquery-rails'
@@ -27,4 +26,5 @@ group :development do
   gem 'did_you_mean'
   gem 'pry-rails'
   gem 'spring'
+  # gem 'web-console'
 end
