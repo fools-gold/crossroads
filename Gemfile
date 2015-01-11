@@ -21,6 +21,7 @@ gem 'gravtastic'
 gem 'high_voltage'
 gem 'jbuilder'
 gem 'simple_form'
+gem 'slack-notify'
 
 group :development do
   gem 'awesome_print'
