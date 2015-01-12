@@ -7,6 +7,8 @@ class Team < ActiveRecord::Base
 
   validates :name, presence: true
 
+  accepts_nested_attributes_for :integration
+
   def notify(message)
     return unless integration.present?
 

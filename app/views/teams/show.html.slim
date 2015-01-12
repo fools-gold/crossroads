@@ -1,0 +1,11 @@
+p#notice = notice
+
+p
+  strong Name:
+  h1 = @team.name
+p
+  strong Integration:
+  - if @team.integration.present?
+    pre = @team.integration.webhook_url
+
+= link_to 'Edit', edit_team_path(@team)

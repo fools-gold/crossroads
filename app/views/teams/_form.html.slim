@@ -1,0 +1,10 @@
+= simple_form_for @team do |f|
+  = f.error_notification
+
+  .form-inputs
+    = f.input :name, required: true
+    = f.simple_fields_for :integration do |i|
+      = i.input :webhook_url, required: true
+
+  .form-actions
+    = f.button :submit

@@ -1,5 +1,10 @@
 class TeamsController < ApplicationController
-  before_action :set_team, only: [:show, :update]
+  before_action :set_team, except: [:create, :new]
+  before_action :authenticate_user!
+
+  def edit
+    @team.build_integration if @team.integration.nil?
+  end
 
   def show
   end
@@ -15,10 +20,10 @@ class TeamsController < ApplicationController
   private
 
   def set_team
-    @team = Team.find(params[:id])
+    @team = current_user.team
   end
 
   def team_params
-    params.require(:team).permit(:name)
+    params.require(:team).permit(:name, integration_attributes: [:webhook_url])
   end
 end
