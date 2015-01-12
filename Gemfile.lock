@@ -101,6 +101,8 @@ GEM
     kaminari (0.16.1)
       actionpack (>= 3.0.0)
       activesupport (>= 3.0.0)
+    local_time (1.0.1)
+      coffee-rails
     loofah (2.0.1)
       nokogiri (>= 1.5.9)
     mail (2.6.3)
@@ -213,6 +215,7 @@ DEPENDENCIES
   jbuilder
   jquery-rails
   kaminari
+  local_time
   pg
   pry-rails
   quiet_assets
