@@ -1,4 +1,6 @@
 class Status < ActiveRecord::Base
+  include Routing
+
   belongs_to :user
   has_and_belongs_to_many :hashtags
 
@@ -24,6 +26,6 @@ class Status < ActiveRecord::Base
   end
 
   def notify_team
-    team.notify "#{user.name} is working on #{description}"
+    team.notify "<#{user_url(user)}|#{user.name}> is <#{users_url}|working on> #{description}"
   end
 end
