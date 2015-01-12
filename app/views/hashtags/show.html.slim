@@ -1,1 +1,3 @@
-== render @hashtag
+h2 = @hashtag.name
+
+== render @hashtag.statuses.order(updated_at: :desc)
