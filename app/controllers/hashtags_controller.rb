@@ -3,7 +3,7 @@ class HashtagsController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @hashtags = current_user.team.hashtags
+    @hashtags = current_user.team.hashtags.order(updated_at: :desc)
   end
 
   def show
