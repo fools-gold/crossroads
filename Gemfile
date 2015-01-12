@@ -20,6 +20,7 @@ gem 'figaro'
 gem 'gravtastic'
 gem 'high_voltage'
 gem 'jbuilder'
+gem 'kaminari'
 gem 'simple_form'
 
 group :development do
