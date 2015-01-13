@@ -24,6 +24,11 @@ gem 'jbuilder'
 gem 'local_time'
 gem 'kaminari'
 gem 'simple_form'
+gem 'unicorn'
+
+group :production do
+  gem 'rails_12factor'
+end
 
 group :development do
   gem 'awesome_print'
