@@ -7,6 +7,7 @@ class UsersController < ApplicationController
   end
 
   def show
+    @statuses = @user.statuses.order(updated_at: :desc).page(params[:page])
   end
 
   def update

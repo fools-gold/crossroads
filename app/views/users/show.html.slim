@@ -1,4 +1,5 @@
-= image_tag @user.gravatar_url, class: 'gravatar'
-h2 = @user.name
-
-== render @user.statuses.order(updated_at: :desc)
+.container
+  = image_tag @user.gravatar_url, class: 'gravatar'
+  h2 = @user.name
+  == render @statuses
+  = paginate @statuses

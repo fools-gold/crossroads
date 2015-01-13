@@ -7,6 +7,7 @@ class HashtagsController < ApplicationController
   end
 
   def show
+    @statuses = @hashtag.statuses.order(updated_at: :desc).page(params[:page])
   end
 
   private
