@@ -11,5 +11,5 @@ Rails.application.routes.draw do
 #     get :statuses, on: :member
   end
 
-  resources :statuses
+  resources :statuses, except: [:show]
 end
