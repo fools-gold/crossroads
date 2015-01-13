@@ -10,6 +10,7 @@ class User < ActiveRecord::Base
   belongs_to :team, counter_cache: true
 
   has_many :statuses, dependent: :destroy
+  has_many :hashtags, through: :statuses
 
   validates :first_name, presence: true
   validates :last_name, presence: true
@@ -18,6 +19,13 @@ class User < ActiveRecord::Base
 
   scope :active, -> {
     includes(:statuses).order('statuses.created_at desc')
+  }
+
+  scope :sort_by_contributions, -> {
+    joins(:hashtags)
+      .select('users.*', 'count(users.id) as contributions')
+      .group('users.id')
+      .order('contributions desc')
   }
 
   def name
