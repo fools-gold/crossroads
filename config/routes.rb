@@ -11,5 +11,7 @@ Rails.application.routes.draw do
 #     get :statuses, on: :member
   end
 
-  resources :statuses, except: [:show]
+  resources :statuses, except: [:show] do
+    get :today, on: :collection
+  end
 end

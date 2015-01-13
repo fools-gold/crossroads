@@ -6,6 +6,7 @@ class Status < ActiveRecord::Base
   validates :user, presence: true
 
   scope :latest, -> { order(created_at: :desc).first }
+  scope :today, -> { where("created_at >= ?", Time.zone.now.beginning_of_day) }
 
   after_save :update_hashtags
 

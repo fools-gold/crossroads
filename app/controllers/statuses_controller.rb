@@ -36,6 +36,10 @@ class StatusesController < ApplicationController
     redirect_to statuses_url, notice: 'Status was successfully destroyed.'
   end
 
+  def today
+    @users = current_user.team.users.active
+  end
+
   private
 
   def set_status
