@@ -17,9 +17,12 @@ gem 'uglifier'
 gem 'devise'
 gem 'faker'
 gem 'figaro'
+gem 'friendly_id', '~> 5.1.0.beta.1' # for rails 4.2 support
 gem 'gravtastic'
 gem 'high_voltage'
 gem 'jbuilder'
+gem 'local_time'
+gem 'kaminari'
 gem 'simple_form'
 
 group :development do

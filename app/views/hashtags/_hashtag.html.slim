@@ -1,3 +1,4 @@
 .hashtag
-  h2 = hashtag.name
+  = link_to hashtag do
+    h2 = hashtag.name
   = render hashtag.statuses.latest

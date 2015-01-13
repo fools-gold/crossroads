@@ -3,7 +3,7 @@ class UsersController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @users = current_user.team.users
+    @users = current_user.team.users.page(params[:page])
   end
 
   def show

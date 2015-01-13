@@ -1,37 +1,39 @@
 class StatusesController < ApplicationController
-  before_action :set_status, only: [:update, :destroy]
+  before_action :set_status, only: [:edit, :update, :destroy]
+  before_action :authenticate_user!
 
   def index
-    @statuses = Status.all
+    @statuses = current_user.team.statuses.order(created_at: :desc).page(params[:page])
+  end
+
+  def new
+    @status = current_user.statuses.build
+  end
+
+  def edit
   end
 
   def create
-    @status = Status.new(status_params)
+    @status = current_user.statuses.build(status_params)
 
-    respond_to do |format|
-      if @status.save
-        format.json { render :show, status: :created, location: @status }
-      else
-        format.json { render json: @status.errors, status: :unprocessable_entity }
-      end
+    if @status.save
+      redirect_to statuses_url, notice: 'Status was successfully created.'
+    else
+      render :new
     end
   end
 
   def update
-    respond_to do |format|
-      if @status.update(status_params)
-        format.json { render :show, status: :ok, location: @status }
-      else
-        format.json { render json: @status.errors, status: :unprocessable_entity }
-      end
+    if @status.update(status_params)
+      redirect_to statuses_url, notice: 'Status was successfully updated.'
+    else
+      render :edit
     end
   end
 
   def destroy
     @status.destroy
-    respond_to do |format|
-      format.json { head :no_content }
-    end
+    redirect_to statuses_url, notice: 'Status was successfully destroyed.'
   end
 
   private
