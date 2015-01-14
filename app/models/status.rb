@@ -1,5 +1,5 @@
 class Status < ActiveRecord::Base
-  belongs_to :user
+  belongs_to :user, counter_cache: true
   has_and_belongs_to_many :hashtags, touch: true
 
   validates :description, presence: true
