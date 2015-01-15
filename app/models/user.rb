@@ -16,6 +16,10 @@ class User < ActiveRecord::Base
   validates :email, presence: true, uniqueness: { scope: :team_id }
   validates :team, presence: true
 
+  scope :active, -> {
+    includes(:statuses).order('statuses.created_at desc').references(:statuses).uniq
+  }
+
   def name
     "#{first_name} #{last_name}"
   end
