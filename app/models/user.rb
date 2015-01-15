@@ -7,7 +7,7 @@ class User < ActiveRecord::Base
   include Gravtastic
   gravtastic
 
-  belongs_to :team
+  belongs_to :team, counter_cache: true
 
   has_many :statuses, dependent: :destroy
 

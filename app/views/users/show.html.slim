@@ -1,5 +1,6 @@
 .container
   = image_tag @user.gravatar_url, class: 'gravatar'
   h2 = @user.name
+  span = pluralize @user.statuses.count, 'status'
   == render @statuses
   = paginate @statuses
