@@ -17,7 +17,7 @@ class User < ActiveRecord::Base
   validates :team, presence: true
 
   scope :active, -> {
-    includes(:statuses).order('statuses.created_at desc').references(:statuses).uniq
+    includes(:statuses).order('statuses.created_at desc')
   }
 
   def name
