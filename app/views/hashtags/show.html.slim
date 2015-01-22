@@ -1,4 +1,8 @@
 .container
   h2 = @hashtag.name
+  ul.list-inline
+    - @hashtag.contributors.each do |contributor|
+      li = link_to contributor do
+        = contributor.name
   == render @statuses
   = paginate @statuses
