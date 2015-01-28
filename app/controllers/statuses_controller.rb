@@ -40,6 +40,10 @@ class StatusesController < ApplicationController
     @users = current_user.team.users.active
   end
 
+  def yesterday
+    @users = current_user.team.users.active
+  end
+
   private
 
   def set_status

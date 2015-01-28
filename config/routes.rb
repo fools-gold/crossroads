@@ -12,6 +12,10 @@ Rails.application.routes.draw do
   end
 
   resources :statuses, except: [:show] do
-    get :today, on: :collection
+    collection do
+      get :today
+      get :yesterday
+      get '/:year/:month/:date', action: :on # 'statuses/2015', 'statuses/2015/01', 'statuses/2015/01/01'
+    end
   end
 end

@@ -1,0 +1,10 @@
+.container
+  h2 Yesterday's status updates for #{current_user.team.name}
+  - @users.each do |user|
+    = link_to user do
+      = image_tag user.gravatar_url
+      h3 = user.name
+    - if user.statuses.yesterday.empty?
+      i No updates yesterday
+    - else
+      == render user.statuses.yesterday.order(created_at: :desc)
