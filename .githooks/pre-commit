@@ -1,0 +1,16 @@
+#!/bin/sh
+
+# install by running: `ln -s .githooks/pre-commit .git/hooks/pre-commit`
+
+RUBY=0
+
+FILES=$(git diff --cached --name-only --diff-filter=ACM --exit-code -- '*.rb')
+
+if [ $? -eq 1 ]; then
+  rubocop -f emacs -R -D --force-exclusion $FILES
+  RUBY=$?
+fi
+
+if [ $RUBY -ne 0 ]; then
+  exit 1
+fi

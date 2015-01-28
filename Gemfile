@@ -40,6 +40,7 @@ group :development do
   gem 'pry-rails'
   gem 'quiet_assets'
   gem 'rails_layout', require: false
+  gem 'rubocop', require: false
   gem 'spring'
   # gem 'web-console'
 end
