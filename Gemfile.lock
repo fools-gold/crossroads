@@ -177,6 +177,9 @@ GEM
       ruby-progressbar (~> 1.4)
     ruby-progressbar (1.7.1)
     sass (3.4.9)
+    scss-lint (0.33.0)
+      rainbow (~> 2.0)
+      sass (~> 3.4.1)
     simple_form (3.1.0)
       actionpack (~> 4.0)
       activemodel (~> 4.0)
@@ -248,6 +251,7 @@ DEPENDENCIES
   rails_12factor
   rails_layout
   rubocop
+  scss-lint
   simple_form
   slim-rails
   spring

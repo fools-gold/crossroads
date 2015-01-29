@@ -41,6 +41,7 @@ group :development do
   gem 'quiet_assets'
   gem 'rails_layout', require: false
   gem 'rubocop', require: false
+  gem 'scss-lint', require: false
   gem 'spring'
   # gem 'web-console'
 end
