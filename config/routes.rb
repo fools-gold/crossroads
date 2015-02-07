@@ -15,7 +15,7 @@ Rails.application.routes.draw do
     collection do
       get :today
       get :yesterday
-      get '/:year/:month/:date', action: :on # 'statuses/2015', 'statuses/2015/01', 'statuses/2015/01/01'
+      get "/:year/:month/:date", action: :on
     end
   end
 end

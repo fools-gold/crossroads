@@ -37,13 +37,28 @@ class StatusesController < ApplicationController
   end
 
   def today
-    @active_users = current_user.team.users.active(Time.zone.today)
-    @nonactive_users = current_user.team.users.nonactive(Time.zone.today)
+    @active_users = current_user.team.users.
+      active(Time.zone.today)
+    @nonactive_users = current_user.team.users.
+      nonactive(Time.zone.today)
   end
 
   def yesterday
-    @active_users = current_user.team.users.active(Time.zone.yesterday)
-    @nonactive_users = current_user.team.users.nonactive(Time.zone.yesterday)
+    @active_users = current_user.team.users.
+      active(Time.zone.yesterday)
+    @nonactive_users = current_user.team.users.
+      nonactive(Time.zone.yesterday)
+  end
+
+  def on
+    @year = params[:year]
+    @month = params[:month]
+    @date = params[:date]
+
+    @active_users = current_user.team.users.
+      active(Time.zone.local(@year, @month, @date))
+    @nonactive_users = current_user.team.users.
+      nonactive(Time.zone.local(@year, @month, @date))
   end
 
   private
