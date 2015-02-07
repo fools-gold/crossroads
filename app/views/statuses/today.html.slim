@@ -1,10 +1,12 @@
 .container
   h2 Today's status updates for #{current_user.team.name}
-  - @users.each do |user|
+  - @active_users.each do |user|
     = link_to user do
       = image_tag user.gravatar_url
       h3 = user.name
-    - if user.statuses.today.empty?
-      i No updates today
-    - else
-      == render user.statuses.today.order(created_at: :desc)
+    == render user.statuses.today.order(created_at: :desc)
+  - @nonactive_users.each do |user|
+    = link_to user do
+      = image_tag user.gravatar_url
+      h3 = user.name
+    i No updates today

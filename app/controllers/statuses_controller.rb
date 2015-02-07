@@ -37,11 +37,13 @@ class StatusesController < ApplicationController
   end
 
   def today
-    @users = current_user.team.users.active
+    @active_users = current_user.team.users.active(Time.zone.today)
+    @nonactive_users = current_user.team.users.nonactive(Time.zone.today)
   end
 
   def yesterday
-    @users = current_user.team.users.active
+    @active_users = current_user.team.users.active(Time.zone.yesterday)
+    @nonactive_users = current_user.team.users.nonactive(Time.zone.yesterday)
   end
 
   private

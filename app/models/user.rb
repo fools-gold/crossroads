@@ -17,9 +17,22 @@ class User < ActiveRecord::Base
   validates :email, presence: true, uniqueness: { scope: :team_id }
   validates :team, presence: true
 
-  scope :active, -> {
-    includes(:statuses).order('statuses.created_at desc')
-  }
+  def self.active(time)
+    startDay = Time.zone.parse(time.to_s).beginning_of_day
+    endDay = Time.zone.parse(time.to_s).end_of_day
+    includes(:statuses)
+    .where('statuses.created_at BETWEEN ? and ?', startDay, endDay)
+    .order('statuses.created_at desc')
+  end
+
+  def self.nonactive(time)
+    active_ids = self.active(time).ids
+    if active_ids.empty?
+      order(:first_name)
+    else
+      where('id NOT IN (?)', active_ids).order(:first_name)
+    end
+  end
 
   scope :sort_by_contributions, -> {
     joins(:hashtags)
