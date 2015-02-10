@@ -1,6 +1,6 @@
 #!/bin/sh
 
-# install by running: `ln -s .githooks/pre-commit .git/hooks/pre-commit`
+# install/update by running: `ln -fs ../../.githooks/pre-commit .git/hooks/pre-commit`
 
 RUBY=0
 

@@ -10,12 +10,17 @@ Style/Documentation:
   Enabled: false
 Style/ExtraSpacing:
   Enabled: true
+Style/Lambda:
+  Enabled: false
 Style/MultilineOperationIndentation:
   EnforcedStyle: indented
 Style/StringLiterals:
   EnforcedStyle: double_quotes
 Style/StringLiteralsInInterpolation:
   EnforcedStyle: double_quotes
+
+Rails/HasAndBelongsToMany:
+  Enabled: false
 
 Metrics/LineLength:
   Max: 120
