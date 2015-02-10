@@ -11,6 +11,8 @@ class User < ActiveRecord::Base
 
   has_many :statuses, dependent: :destroy
   has_many :hashtags, through: :statuses
+  has_many :likes, dependent: :destroy
+  has_many :liked_statuses, through: :likes, source: :status
 
   validates :first_name, presence: true
   validates :last_name, presence: true
@@ -41,5 +43,17 @@ class User < ActiveRecord::Base
 
   def name
     "#{first_name} #{last_name}"
+  end
+
+  def like!(status)
+    liked_statuses << status unless likes?(status)
+  end
+
+  def unlike!(status)
+    liked_statuses.destroy(status)
+  end
+
+  def likes?(status)
+    liked_statuses.include?(status)
   end
 end

@@ -2,6 +2,9 @@ class Status < ActiveRecord::Base
   belongs_to :user, counter_cache: true
   has_and_belongs_to_many :hashtags, touch: true
 
+  has_many :likes, dependent: :destroy
+  has_many :likers, through: :likes, source: :user
+
   validates :description, presence: true
   validates :user, presence: true
 
@@ -23,5 +26,9 @@ class Status < ActiveRecord::Base
     names = description.scan(/(?<=#)[[:alpha:]][[[:alnum:]]-]*/).uniq
     names.each { |name| yield name } if block_given?
     names
+  end
+
+  def liked_by?(user)
+    likers.include?(user)
   end
 end

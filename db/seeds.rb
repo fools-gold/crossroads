@@ -23,4 +23,6 @@
       user.statuses.create description: sentence.shuffle.join(' ')
     end
   end
+
+  20.times { team.users.sample.like!(team.statuses.sample) }
 end

@@ -17,5 +17,7 @@ Rails.application.routes.draw do
       get :yesterday
       get "/:year/:month/:day", action: :on
     end
+    resources :likes, only: [:create]
+    resource :like, only: [:destroy]
   end
 end
