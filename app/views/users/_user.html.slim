@@ -1,5 +1,7 @@
 .person
-  = link_to user do
+  .photo
     = image_tag user.gravatar_url
-    h2 = user.name
-  = render user.statuses.latest
+  .content
+    = link_to user do
+      h3.name = user.name
+    = render user.statuses.latest

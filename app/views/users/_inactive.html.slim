@@ -1,4 +1,7 @@
-= link_to user do
-  = image_tag user.gravatar_url
-  h3 = user.name
-i No updates
+.person
+  .photo
+    = image_tag user.gravatar_url
+  .content
+    = link_to user do
+      h3.name = user.name
+    i No updates

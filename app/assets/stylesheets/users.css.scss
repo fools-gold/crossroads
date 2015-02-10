@@ -1,0 +1,19 @@
+@import "bootstrap";
+
+.person {
+  @extend .media;
+
+  .photo {
+    @extend .media-left;
+    width: 48px;
+    height: 48px;
+  }
+
+  .content {
+    @extend .media-body;
+
+    .name {
+      margin-top: 0;
+    }
+  }
+}

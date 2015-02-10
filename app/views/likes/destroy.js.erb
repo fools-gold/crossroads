@@ -1,2 +1,2 @@
-$(".like_count[data-status-id=<%= @status.id %>]").text("<%= @status.likers.count %>");
-$(".like_form[data-status-id=<%= @status.id %>]").html("<%= j render 'statuses/like', status: @status %>");
+$(".likes-count[data-status-id=<%= @status.id %>]").text("<%= pluralize @status.likes.count, 'like' %>");
+$(".like-form[data-status-id=<%= @status.id %>]").html("<%= j render 'statuses/like', status: @status %>");

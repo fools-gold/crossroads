@@ -1,8 +1,10 @@
-p == auto_link_hashtags status.description
-= timeago_tag status.created_at
-span.like_count> data={ status_id: status.id } = status.likes_count
-.like_form data={ status_id: status.id }
-  - if current_user.likes?(status)
-    == render 'statuses/unlike', status: status
-  - else
-    == render 'statuses/like', status: status
+.status
+  p.description == auto_link_hashtags status.description
+  => timeago_tag status.created_at
+  ' ·
+  span.likes-count data={ status_id: status.id } = pluralize status.likes_count, 'like'
+  .like-form data={ status_id: status.id }
+    - if current_user.likes?(status)
+      == render 'statuses/unlike', status: status
+    - else
+      == render 'statuses/like', status: status
