@@ -1,0 +1,4 @@
+= link_to user do
+  = image_tag user.gravatar_url
+  h3 = user.name
+== render user.statuses.on(date).order(created_at: :desc)

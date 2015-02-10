@@ -5,17 +5,15 @@ class Status < ActiveRecord::Base
   validates :description, presence: true
   validates :user, presence: true
 
-  scope :latest, -> {
-    order(created_at: :desc).first
-  }
-  scope :today, -> {
-    where("created_at >= ?", Time.zone.now.beginning_of_day)
-  }
-  scope :yesterday, -> {
-    where(created_at: Time.zone.yesterday.beginning_of_day.all_day)
-  }
+  scope :latest, -> { order(created_at: :desc).first }
+  scope :today, -> { where("created_at >= ?", Time.zone.now.beginning_of_day) }
+  scope :yesterday, -> { where(created_at: Time.zone.yesterday.beginning_of_day.all_day) }
 
   after_save :update_hashtags
+
+  def self.on(date)
+    where(created_at: date.in_time_zone.beginning_of_day.all_day)
+  end
 
   def update_hashtags
     self.hashtags = extract_hashtags.map { |name| Hashtag.find_or_create_by(name: name) }
@@ -25,10 +23,5 @@ class Status < ActiveRecord::Base
     names = description.scan(/(?<=#)[[:alpha:]][[[:alnum:]]-]*/).uniq
     names.each { |name| yield name } if block_given?
     names
-  end
-
-  def self.on(year, month, date)
-    where(created_at: Time.zone.
-      local(year, month, date).beginning_of_day.all_day)
   end
 end

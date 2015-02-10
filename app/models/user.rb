@@ -17,29 +17,27 @@ class User < ActiveRecord::Base
   validates :email, presence: true, uniqueness: { scope: :team_id }
   validates :team, presence: true
 
-  def self.active(time)
-    start_day = Time.zone.parse(time.to_s).beginning_of_day
-    end_day = Time.zone.parse(time.to_s).end_of_day
-    includes(:statuses).
-      where("statuses.created_at BETWEEN ? and ?", start_day, end_day).
-      order("statuses.created_at desc")
+  scope :sort_by_contributions, -> {
+    joins(:hashtags)
+      .select("users.*", "count(users.id) as contributions")
+      .group("users.id")
+      .order("contributions desc")
+  }
+
+  def self.active(date)
+    includes(:statuses)
+      .where(statuses: { created_at: date.in_time_zone.beginning_of_day.all_day })
+      .order("statuses.created_at desc")
   end
 
-  def self.nonactive(time)
-    active_ids = active(time).ids
+  def self.inactive(date)
+    active_ids = active(date).ids
     if active_ids.empty?
       order(:first_name)
     else
       where.not(id: active_ids).order(:first_name)
     end
   end
-
-  scope :sort_by_contributions, -> {
-    joins(:hashtags)
-      .select('users.*', 'count(users.id) as contributions')
-      .group('users.id')
-      .order('contributions desc')
-  }
 
   def name
     "#{first_name} #{last_name}"
