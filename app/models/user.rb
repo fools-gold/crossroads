@@ -18,6 +18,7 @@ class User < ActiveRecord::Base
   validates :last_name, presence: true
   validates :email, presence: true, uniqueness: { scope: :team_id }
   validates :team, presence: true
+  validates :timezone, presence: true, inclusion: { in: ActiveSupport::TimeZone.zones_map(&:name).keys }
 
   scope :sort_by_contributions, -> {
     joins(:hashtags)
@@ -25,6 +26,8 @@ class User < ActiveRecord::Base
       .group("users.id")
       .order("contributions desc")
   }
+
+  before_create { self.timezone ||= Rails.application.config.time_zone }
 
   def self.active(date)
     includes(:statuses)

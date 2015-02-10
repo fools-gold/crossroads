@@ -1,5 +1,5 @@
 p == auto_link_hashtags status.description
-span> = local_time_ago status.created_at
+= timeago_tag status.created_at
 span.like_count> data={ status_id: status.id } = status.likes_count
 .like_form data={ status_id: status.id }
   - if current_user.likes?(status)
