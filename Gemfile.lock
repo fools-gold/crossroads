@@ -105,8 +105,6 @@ GEM
       actionpack (>= 3.0.0)
       activesupport (>= 3.0.0)
     kgio (2.9.3)
-    local_time (1.0.1)
-      coffee-rails
     loofah (2.0.1)
       nokogiri (>= 1.5.9)
     mail (2.6.3)
@@ -153,6 +151,9 @@ GEM
       rails-deprecated_sanitizer (>= 1.0.1)
     rails-html-sanitizer (1.0.1)
       loofah (~> 2.0)
+    rails-timeago (2.11.1)
+      actionpack (>= 3.1)
+      activesupport (>= 3.1)
     rails_12factor (0.0.3)
       rails_serve_static_assets
       rails_stdout_logging
@@ -243,11 +244,11 @@ DEPENDENCIES
   jbuilder
   jquery-rails
   kaminari
-  local_time
   pg
   pry-rails
   quiet_assets
   rails (= 4.2.0)
+  rails-timeago
   rails_12factor
   rails_layout
   rubocop
