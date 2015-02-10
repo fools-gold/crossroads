@@ -7,8 +7,13 @@ class Status < ActiveRecord::Base
 
   scope :latest, -> { order(created_at: :desc).first }
   scope :today, -> { where("created_at >= ?", Time.zone.now.beginning_of_day) }
+  scope :yesterday, -> { where(created_at: Time.zone.yesterday.beginning_of_day.all_day) }
 
   after_save :update_hashtags
+
+  def self.on(date)
+    where(created_at: date.in_time_zone.beginning_of_day.all_day)
+  end
 
   def update_hashtags
     self.hashtags = extract_hashtags.map { |name| Hashtag.find_or_create_by(name: name) }
