@@ -27,7 +27,7 @@ class User < ActiveRecord::Base
       .order("contributions desc")
   }
 
-  before_create { self.timezone ||= Rails.application.config.time_zone }
+  before_validation { self.timezone ||= Rails.application.config.time_zone }
 
   def self.active(date)
     includes(:statuses)
