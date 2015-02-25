@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   devise_for :users
 
-  resources :teams, only: [:show, :update]
+  resource :team, only: [:show, :update, :edit]
 
   resources :users, only: [:index, :show, :update] do
     # get :statuses, on: :member

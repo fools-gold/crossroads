@@ -1,24 +1,28 @@
 class TeamsController < ApplicationController
-  before_action :set_team, only: [:show, :update]
+  before_action :set_team, only: [:show, :update, :edit]
 
   def show
   end
 
   def update
     if @team.update(team_params)
-      redirect_to @team, notice: 'Team was successfully updated.'
+      redirect_to team_url, notice: 'Your team was successfully updated.'
     else
-      # render :edit
+      render :edit
     end
+  end
+
+  def edit
   end
 
   private
 
   def set_team
-    @team = Team.find(params[:id])
+    @team = current_user.team
   end
 
   def team_params
-    params.require(:team).permit(:name)
+    params.require(:team).permit(:name, :description)
   end
+
 end
