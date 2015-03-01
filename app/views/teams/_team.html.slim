@@ -1,0 +1,13 @@
+.team
+  h1
+    | Team
+    i ==<>  team.name
+    - if current_user.admin?
+      = link_to 'Edit', edit_team_path, class: 'btn btn-default'
+  p.description
+    - if team.description.blank?
+      i No description yet
+    - else
+      == team.description
+  h3 Members in the team
+  = render team.users
