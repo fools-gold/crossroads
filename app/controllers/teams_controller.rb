@@ -13,6 +13,7 @@ class TeamsController < ApplicationController
   end
 
   def edit
+    redirect_to root_url unless current_user.admin?
   end
 
   private
