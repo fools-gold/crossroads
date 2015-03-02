@@ -27,6 +27,7 @@ gem 'rollbar'
 gem 'simple_form'
 gem 'sucker_punch'
 gem 'unicorn'
+gem "paperclip"
 
 group :production do
   gem 'rails_12factor'
