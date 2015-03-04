@@ -1,5 +1,26 @@
 @import "bootstrap";
 
+.navigation {
+  .prev, .next {
+    margin-right: 10px;
+  }
+}
+
+.active-people,
+.inactive-people {
+  .meta {
+    display: block;
+  }
+
+  .person-thumbnail {
+    @extend .thumbnail;
+    display: inline-block;
+    width: 48px;
+    height: 48px;
+    margin-bottom: 0px;
+  }
+}
+
 .status {
   .description {
     @extend .lead;

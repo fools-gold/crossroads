@@ -30,18 +30,20 @@ class User < ActiveRecord::Base
 
   before_validation { self.timezone ||= Rails.application.config.time_zone }
 
-  def self.active(date)
-    includes(:statuses)
-      .where(statuses: { created_at: date.in_time_zone.beginning_of_day.all_day })
-      .order("statuses.created_at desc")
-  end
+  class << self
+    def active(period)
+      includes(:statuses)
+        .where(statuses: { created_at: period })
+        .order("statuses.created_at desc")
+    end
 
-  def self.inactive(date)
-    active_ids = active(date).ids
-    if active_ids.empty?
-      order(:first_name)
-    else
-      where.not(id: active_ids).order(:first_name)
+    def inactive(period)
+      active_ids = active(period).ids
+      if active_ids.empty?
+        order(:first_name)
+      else
+        where.not(id: active_ids).order(:first_name)
+      end
     end
   end
 

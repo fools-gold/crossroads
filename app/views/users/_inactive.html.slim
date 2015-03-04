@@ -1,7 +1,3 @@
-.person
-  .photo
-    = image_tag user.gravatar_url
-  .content
-    = link_to user do
-      h3.name = user.name
-    i No updates
+.person-thumbnail
+  = link_to user, title: user.name do
+    = image_tag(user.gravatar_url)

@@ -1,2 +1,6 @@
-== render partial: 'users/active', collection: users.active(@date), as: :user, locals: {date: @date}
-== render partial: 'users/inactive', collection: users.inactive(@date), as: :user
+.active-people
+  span.meta = pluralize users.active(@period).count, "active user"
+  == render partial: 'users/active', collection: users.active(@period), as: :user
+.inactive-people
+  span.meta = pluralize users.inactive(@period).count, "inactive user"
+  == render partial: 'users/inactive', collection: users.inactive(@period), as: :user

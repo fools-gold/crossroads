@@ -1,3 +1,5 @@
 .container
   h2 Today's status updates for #{current_user.team.name}
   == render 'users'
+  == render statuses
+  = paginate statuses
