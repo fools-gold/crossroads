@@ -15,7 +15,11 @@ Rails.application.routes.draw do
     collection do
       get :today
       get :yesterday
-      get "/:year/:month/:day", action: :on
+      constraints year: /\d{4}/, month: /(0?[1-9]|1[012])/, day: /(0?[1-9]|[12]\d|3[01])/ do
+        get "/:year/:month/:day", action: :daily, as: :daily
+        get "/:year/:month", action: :monthly, as: :monthly
+        get "/:year", action: :yearly, as: :yearly
+      end
     end
     resources :likes, only: [:create]
     resource :like, only: [:destroy]

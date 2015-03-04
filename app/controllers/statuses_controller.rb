@@ -2,7 +2,7 @@ class StatusesController < ApplicationController
   before_action :set_status, only: [:edit, :update, :destroy]
   before_action :authenticate_user!
 
-  helper_method :users
+  helper_method :users, :statuses
 
   def index
     @statuses = current_user.team.statuses.order(created_at: :desc).page(params[:page])
@@ -39,15 +39,32 @@ class StatusesController < ApplicationController
   end
 
   def today
-    @date = Time.zone.today
+    @period = Time.zone.today.all_day
   end
 
   def yesterday
-    @date = Time.zone.yesterday
+    @period = Time.zone.yesterday.all_day
   end
 
-  def on
+  def daily
     @date = Time.zone.local(params[:year], params[:month], params[:day]).to_date
+    @prev = @date.yesterday
+    @next = @date.tomorrow
+    @period = @date
+  end
+
+  def monthly
+    @date = Time.zone.local(params[:year], params[:month]).to_date
+    @prev = @date.prev_month
+    @next = @date.next_month
+    @period = @date.all_month
+  end
+
+  def yearly
+    @date = Time.zone.local(params[:year]).to_date
+    @prev = @date.prev_year
+    @next = @date.next_year
+    @period = @date.all_year
   end
 
   private
@@ -58,6 +75,10 @@ class StatusesController < ApplicationController
 
   def users
     @users ||= current_user.team.users
+  end
+
+  def statuses
+    @statues ||= current_user.team.statuses.during(@period).order(created_at: :desc).page(params[:page])
   end
 
   def status_params

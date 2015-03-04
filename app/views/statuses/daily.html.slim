@@ -1,0 +1,10 @@
+.container
+  h2 Status updates for #{current_user.team.name} on #{@date.strftime("%Y/%m/%d")}
+  .navigation
+    span.prev
+      => link_to '<< Previous day', daily_statuses_path(@prev.year, @prev.month, @prev.day), title: @prev.strftime("%Y/%m/%d")
+    span.next
+      = link_to 'Next day >>', daily_statuses_path(@next.year, @next.month, @next.day), title: @next.strftime("%Y/%m/%d")
+  == render 'users'
+  == render statuses
+  = paginate statuses

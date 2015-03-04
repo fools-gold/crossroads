@@ -14,8 +14,10 @@ class Status < ActiveRecord::Base
 
   after_save :update_hashtags
 
-  def self.on(date)
-    where(created_at: date.in_time_zone.beginning_of_day.all_day)
+  class << self
+    def during(period)
+      where(created_at: period)
+    end
   end
 
   def update_hashtags
