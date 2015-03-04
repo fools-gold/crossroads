@@ -19,7 +19,7 @@ class User < ActiveRecord::Base
   validates :email, presence: true, uniqueness: { scope: :team_id }
   validates :team, presence: true
   validates :timezone, presence: true, inclusion: { in: ActiveSupport::TimeZone.zones_map(&:name).keys }
-  validates :admin, presence: true
+  validates :admin, inclusion: { in: [true, false] }
 
   scope :sort_by_contributions, -> {
     joins(:hashtags)
