@@ -78,7 +78,7 @@ class StatusesController < ApplicationController
   end
 
   def statuses
-    @statues ||= current_user.team.statuses.during(@period).order(created_at: :desc).page(params[:page])
+    @statuses ||= current_user.team.statuses.during(@period).order(created_at: :desc).page(params[:page])
   end
 
   def status_params
