@@ -1,5 +1,6 @@
 exclude:
   - vendor/**
+  - app/assets/stylesheets/application.css.scss
 
 linters:
   HexLength:
