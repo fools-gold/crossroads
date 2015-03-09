@@ -3,7 +3,13 @@
 
   .form-inputs
     = f.input :description
-    = f.input :photo
+    .status-photo
+      - if @status.photo?
+        = image_tag @status.photo.url(:thumb)
+        = label_tag 'remove_status_photo' do
+          = check_box_tag 'remove_status_photo', true, false
+          = 'Remove Photo'
+      = f.input :photo
 
   .form-actions
     = f.button :submit

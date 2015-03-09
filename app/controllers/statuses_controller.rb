@@ -26,6 +26,7 @@ class StatusesController < ApplicationController
   end
 
   def update
+    @status.photo = nil if params[:remove_status_photo] == "true"
     if @status.update(status_params)
       redirect_to statuses_url, notice: "Status was successfully updated."
     else
