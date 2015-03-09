@@ -20,3 +20,6 @@
 
 # Ignore environments settings.
 /config/environments/
+
+# Ignore paperclip attachments.
+/public/system/
