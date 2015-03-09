@@ -39,11 +39,11 @@ class StatusesController < ApplicationController
   end
 
   def today
-    @period = Time.zone.today.all_day
+    @period = Time.zone.today
   end
 
   def yesterday
-    @period = Time.zone.yesterday.all_day
+    @period = Time.zone.yesterday
   end
 
   def daily

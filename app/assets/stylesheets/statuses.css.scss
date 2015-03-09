@@ -1,7 +1,8 @@
 @import "bootstrap";
 
 .navigation {
-  .prev, .next {
+  .prev,
+  .next {
     margin-right: 10px;
   }
 }
@@ -15,9 +16,9 @@
   .person-thumbnail {
     @extend .thumbnail;
     display: inline-block;
-    width: 48px;
     height: 48px;
-    margin-bottom: 0px;
+    margin-bottom: 0;
+    width: 48px;
   }
 }
 
