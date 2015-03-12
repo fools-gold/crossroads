@@ -23,7 +23,9 @@ gem 'high_voltage'
 gem 'jbuilder'
 gem 'kaminari'
 gem 'rails-timeago'
+gem 'rollbar'
 gem 'simple_form'
+gem 'sucker_punch'
 gem 'unicorn'
 
 group :production do
