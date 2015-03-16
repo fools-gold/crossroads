@@ -2,6 +2,7 @@ AllCops:
   Exclude:
     - 'db/schema.rb'
     - 'db/migrate/*'
+    - 'spec/*_helper.rb'
   RunRailsCops: true
 
 Style/AlignHash:

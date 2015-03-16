@@ -48,3 +48,10 @@ group :development do
   gem 'spring'
   # gem 'web-console'
 end
+
+group :test do
+  gem 'codeclimate-test-reporter', require: false
+  gem 'factory_girl_rails'
+  gem 'rspec-rails'
+  gem 'timecop'
+end
