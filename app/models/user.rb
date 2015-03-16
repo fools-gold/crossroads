@@ -12,7 +12,7 @@ class User < ActiveRecord::Base
   has_many :statuses, dependent: :destroy
   has_many :hashtags, through: :statuses
   has_many :likes, dependent: :destroy
-  has_many :liked_statuses, through: :likes, source: :status
+  has_many :favorites, through: :likes, source: :status
 
   validates :first_name, presence: true
   validates :last_name, presence: true
@@ -51,14 +51,14 @@ class User < ActiveRecord::Base
   end
 
   def like!(status)
-    liked_statuses << status unless likes?(status)
+    favorites << status unless likes?(status)
   end
 
   def unlike!(status)
-    liked_statuses.destroy(status)
+    favorites.destroy(status)
   end
 
   def likes?(status)
-    liked_statuses.include?(status)
+    favorites.include?(status)
   end
 end
