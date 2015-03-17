@@ -28,6 +28,9 @@ gem 'simple_form'
 gem 'sucker_punch'
 gem 'unicorn'
 gem "paperclip"
+gem 'searchkick'
+gem "paperclip"
+gem 'searchkick'
 
 group :production do
   gem 'rails_12factor'

@@ -17,6 +17,8 @@ class Status < ActiveRecord::Base
 
   after_save :update_hashtags
 
+  searchkick
+
   class << self
     def during(period)
       where(created_at: period)

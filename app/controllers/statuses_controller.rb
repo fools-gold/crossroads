@@ -39,6 +39,14 @@ class StatusesController < ApplicationController
     redirect_to statuses_url, notice: "Status was successfully destroyed."
   end
 
+  def search
+    @statuses = current_user.team.statuses.search(
+        params[:query],
+        page: params[:page],
+        order: { created_at: :desc },
+        per_page: 20)
+  end
+
   def today
     @period = Time.zone.today.beginning_of_day.all_day
   end

@@ -13,6 +13,7 @@ Rails.application.routes.draw do
 
   resources :statuses, except: [:show] do
     collection do
+      get :search
       get :today
       get :yesterday
       constraints year: /\d{4}/, month: /(0?[1-9]|1[012])/, day: /(0?[1-9]|[12]\d|3[01])/ do
@@ -24,4 +25,6 @@ Rails.application.routes.draw do
     resources :likes, only: [:create]
     resource :like, only: [:destroy]
   end
+
+  get "/search", to: "search#index"
 end
