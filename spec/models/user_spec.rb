@@ -2,19 +2,14 @@ require "rails_helper"
 
 RSpec.describe User, type: :model do
   describe ".active" do
-    before { Timecop.freeze }
-    after { Timecop.return }
-
     let(:period) { 10.days.ago..Time.now }
 
     let(:active_users) do
-      Timecop.travel(5.days.ago)
-      create_list(:user_with_statuses, 5)
+      travel_to(5.days.ago) { create_list(:user_with_statuses, 5) }
     end
 
     let(:inactive_users) do
-      Timecop.travel(20.days.ago)
-      create_list(:user_with_statuses, 5)
+      travel_to(20.days.ago) { create_list(:user_with_statuses, 5) }
     end
 
     it "returns users with status updates during a given period" do
@@ -23,19 +18,14 @@ RSpec.describe User, type: :model do
   end
 
   describe ".inactive" do
-    before { Timecop.freeze }
-    after { Timecop.return }
-
     let(:period) { 10.days.ago..Time.now }
 
     let(:active_users) do
-      Timecop.travel(5.days.ago)
-      create_list(:user_with_statuses, 5)
+      travel_to(5.days.ago) { create_list(:user_with_statuses, 5) }
     end
 
     let(:inactive_users) do
-      Timecop.travel(20.days.ago)
-      create_list(:user_with_statuses, 5)
+      travel_to(20.days.ago) { create_list(:user_with_statuses, 5) }
     end
 
     it "returns users without status updates during a given period" do
