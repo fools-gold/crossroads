@@ -25,6 +25,6 @@ Rails.application.routes.draw do
     resources :likes, only: [:create]
     resource :like, only: [:destroy]
   end
-
   get "/search", to: "search#index"
+  get "/search/autocomplete", to: "search#autocomplete"
 end

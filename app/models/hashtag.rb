@@ -6,4 +6,6 @@ class Hashtag < ActiveRecord::Base
   has_many :contributors, -> { sort_by_contributions }, through: :statuses, source: :user
 
   validates :name, presence: true, uniqueness: true
+
+  searchkick autocomplete: ["name"]
 end

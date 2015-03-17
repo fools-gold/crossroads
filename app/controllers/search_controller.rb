@@ -10,6 +10,13 @@ class SearchController < ApplicationController
       per_page: 20)
   end
 
+  def autocomplete
+    render json: Hashtag.search(
+        @query,
+        autocomplete: true,
+        limit: 10).map { |i| "#" + i.name }
+  end
+
   private
 
   def set_param
