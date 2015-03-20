@@ -1,4 +1,4 @@
-# $ ->
-#   $('#search_input').typeahead
-#     menu: "<ul class='typeahead dropdown-menu dropdown-fixed'></ul>"
-#     remote: "/search/autocomplete?query=%QUERY"
+ $ ->
+   $('#search_input').typeahead
+     remote: "/search/autocomplete?query=%QUERY"
+     hint: $('.form-control')
