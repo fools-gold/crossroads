@@ -1,3 +1,3 @@
-= form_for([status, status.likes.build], remote: true) do |f|
+= form_for(status, url: like_path(status), html: { method: :post},  remote: true) do |f|
   .form-actions
     = f.button 'Like', class: 'btn btn-link'

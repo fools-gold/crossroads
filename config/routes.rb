@@ -21,7 +21,8 @@ Rails.application.routes.draw do
         get "/:year", action: :yearly, as: :yearly
       end
     end
-    resources :likes, only: [:create]
-    resource :like, only: [:destroy]
+    member do
+      resource :like, only: [:create, :destroy]
+    end
   end
 end

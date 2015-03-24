@@ -4,7 +4,7 @@ class LikesController < ApplicationController
   def create
     current_user.like!(status)
     respond_to do |format|
-      format.html { redirect_to status }
+      format.html { redirect_to statuses_url }
       format.js
     end
   end
@@ -12,7 +12,7 @@ class LikesController < ApplicationController
   def destroy
     current_user.unlike!(status)
     respond_to do |format|
-      format.html { redirect_to status }
+      format.html { redirect_to statuses_url }
       format.js
     end
   end
@@ -20,6 +20,6 @@ class LikesController < ApplicationController
   private
 
   def status
-    @status ||= Status.find(params[:status_id])
+    @status ||= Status.find(params[:id])
   end
 end
