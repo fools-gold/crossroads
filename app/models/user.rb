@@ -12,7 +12,8 @@ class User < ActiveRecord::Base
   has_many :statuses, dependent: :destroy
   has_many :hashtags, through: :statuses
   has_many :likes, dependent: :destroy
-  has_many :favorites, through: :likes, source: :status
+  has_many :favorites, through: :likes, source: :likeable, source_type: "Status"
+  has_many :liked_hashtags, through: :likes, source: :likeable, source_type: "Hashtag"
 
   validates :first_name, presence: true
   validates :last_name, presence: true
