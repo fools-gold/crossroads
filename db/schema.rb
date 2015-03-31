@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150324115132) do
+ActiveRecord::Schema.define(version: 20150331030003) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -49,13 +49,15 @@ ActiveRecord::Schema.define(version: 20150324115132) do
 
   create_table "likes", force: :cascade do |t|
     t.integer  "user_id",       null: false
+    t.integer  "likeable_id",   null: false
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
-    t.integer  "likeable_id"
-    t.string   "likeable_type"
+    t.string   "likeable_type", null: false
   end
 
-  add_index "likes", ["likeable_type", "likeable_id"], name: "index_likes_on_likeable_type_and_likeable_id", using: :btree
+  add_index "likes", ["likeable_id", "user_id"], name: "index_likes_on_likeable_id_and_user_id", unique: true, using: :btree
+  add_index "likes", ["likeable_id"], name: "index_likes_on_likeable_id", using: :btree
+  add_index "likes", ["user_id", "likeable_id"], name: "index_likes_on_user_id_and_likeable_id", unique: true, using: :btree
   add_index "likes", ["user_id"], name: "index_likes_on_user_id", using: :btree
 
   create_table "statuses", force: :cascade do |t|
@@ -109,6 +111,7 @@ ActiveRecord::Schema.define(version: 20150324115132) do
 
   add_foreign_key "hashtags_statuses", "hashtags", on_delete: :cascade
   add_foreign_key "hashtags_statuses", "statuses", on_delete: :cascade
+  add_foreign_key "likes", "statuses", column: "likeable_id", on_delete: :cascade
   add_foreign_key "likes", "users", on_delete: :cascade
   add_foreign_key "statuses", "users", on_delete: :cascade
   add_foreign_key "users", "teams", on_delete: :cascade
