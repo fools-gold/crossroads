@@ -9,9 +9,7 @@ Rails.application.routes.draw do
 
   resources :hashtags, only: [:index, :show] do
     # get :statuses, on: :member
-    member do
-      resource :like, only: [:create, :destroy]
-    end
+    resource :like, only: [:create, :destroy]
   end
 
   resources :statuses, except: [:show] do
@@ -24,8 +22,6 @@ Rails.application.routes.draw do
         get "/:year", action: :yearly, as: :yearly
       end
     end
-    member do
-      resource :like, only: [:create, :destroy]
-    end
+    resource :like, only: [:create, :destroy]
   end
 end

@@ -20,6 +20,6 @@ class LikesController < ApplicationController
   private
 
   def status
-    @status ||= Status.find(params[:id])
+    @status ||= Status.find(params[:status_id])
   end
 end
