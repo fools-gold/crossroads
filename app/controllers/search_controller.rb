@@ -14,7 +14,7 @@ class SearchController < ApplicationController
     render json: Hashtag.search(
         @query,
         autocomplete: true,
-        limit: 10).map { |i| "#" + i.name }
+        limit: 10).map { |i| { value: "#" + i.name } }
   end
 
   private

@@ -9,7 +9,6 @@ $ ->
     queryTokenizer: Bloodhound.tokenizers.whitespace
   })
 
-  hashtags.clearPrefetchCache()
   hashtags.initialize()
 
   $('#search_input').typeahead(
